@@ -1,0 +1,2716 @@
+/* ==========================================
+   Tesi Hősök
+   Alap stílus – v0.1
+========================================== */
+
+:root {
+    --background: #10131a;
+    --panel: #1b202b;
+    --panel-light: #252c3a;
+    --text: #ffffff;
+    --muted: #aeb6c7;
+
+    --hero: #ffd43b;
+    --button: #343c4d;
+    --button-hover: #465168;
+
+    --radius: 16px;
+}
+
+/* Alap */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        /* bal felső kék */
+        radial-gradient(
+            circle at 0% 8%,
+            rgba(0, 190, 255, 0.65),
+            transparent 28%
+        ),
+
+        /* jobb felső narancs */
+        radial-gradient(
+            circle at 100% 12%,
+            rgba(255, 105, 30, 0.55),
+            transparent 27%
+        ),
+
+        /* bal közép zöld */
+        radial-gradient(
+            circle at 0% 48%,
+            rgba(0, 230, 150, 0.55),
+            transparent 30%
+        ),
+
+        /* jobb közép lila */
+        radial-gradient(
+            circle at 100% 48%,
+            rgba(110, 50, 255, 0.55),
+            transparent 30%
+        ),
+
+        /* bal alsó narancs */
+        radial-gradient(
+            circle at 5% 92%,
+            rgba(255, 130, 20, 0.45),
+            transparent 25%
+        ),
+
+        /* jobb alsó türkiz */
+        radial-gradient(
+            circle at 95% 90%,
+            rgba(0, 210, 220, 0.48),
+            transparent 28%
+        ),
+
+        /* SÖTÉT KÖZÉP */
+        linear-gradient(
+            180deg,
+            #061a34 0%,
+            #082b4d 55%,
+            #061d38 100%
+        );
+
+    background-attachment: fixed;
+}
+/* Fejléc */
+
+header {
+    text-align: center;
+
+    padding: 30px 20px 20px;
+}
+
+header h1 {
+    margin: 0 0 8px;
+
+    font-size: 3rem;
+    color: var(--hero);
+}
+
+header p {
+    margin: 4px 0 0;
+
+    color: #f4f7ff;
+
+    font-size: 1.35rem;
+    font-weight: 600;
+
+    font-family: "Fredoka", sans-serif;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.65),
+        0 0 8px rgba(255, 255, 255, 0.18);
+}
+
+/* Fő tartalom */
+
+main {
+    width: 94%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+/* Panelek */
+
+section {
+    background: var(--panel);
+
+    border-radius: var(--radius);
+
+    padding: 24px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+section h2 {
+    margin-top: 0;
+
+    font-size: 1.4rem;
+}
+
+/* Tanulók */
+
+#studentList {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    max-height: 420px;
+    overflow-y: auto;
+
+    padding-right: 6px;
+}
+
+.student {
+    padding: 12px 14px;
+
+    background: var(--panel-light);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.student:hover {
+    background: var(--button-hover);
+}
+
+/* ==============================
+   Hőskártya
+============================== */
+
+#heroCard {
+    min-height: 520px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 24px;
+
+    box-sizing: border-box;
+
+    background:
+        url("../images/hero-card-bg.png")
+        center / 100% 100% no-repeat;
+
+    border-radius: var(--radius);
+
+    border: 2px solid rgba(255, 212, 59, 0.55);
+
+    overflow: hidden;
+}
+
+/* ==============================
+   Hőskártya neve
+============================== */
+
+#heroName {
+    position: relative;
+
+    margin: 0 0 30px;
+
+    padding: 8px 30px 18px;
+
+    min-width: 55%;
+
+    box-sizing: border-box;
+
+    color: white;
+
+    font-size: 3rem;
+    font-weight: 700;
+
+    font-family:
+        "Arial Rounded MT Bold",
+        "Trebuchet MS",
+        sans-serif;
+
+    letter-spacing: 0.8px;
+
+    text-shadow:
+        0 3px 5px rgba(0, 0, 0, 0.65),
+        0 0 10px rgba(255, 255, 255, 0.2);
+
+    background: rgba(8, 35, 75, 0.86);
+
+    border: 2px solid rgba(255, 212, 59, 0.9);
+
+    border-radius: 10px;
+}
+
+/* Díszítő aláhúzás */
+
+#heroName::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 9px;
+
+    width: 150px;
+    height: 4px;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.5);
+}
+/* ==============================
+   Jelvénymező
+============================== */
+
+#badges {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+
+    padding: 14px;
+
+    /* Sötétkék, enyhén színes belső háttér */
+   background:
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 150, 255, 0.22),
+        transparent 40%
+    ),
+    linear-gradient(
+        145deg,
+        #104779,
+        #0b3158 55%,
+        #104066
+    );
+
+    border: 2px solid rgba(0, 125, 210, 0.75);
+
+    border-radius: 14px;
+
+    max-height: 250px;
+    overflow-y: auto;
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 80, 160, 0.25),
+        0 0 12px rgba(0, 120, 220, 0.10);
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(80, 160, 220, 0.65)
+        transparent;
+}
+
+/* Chrome / Edge görgetősáv */
+
+#badges::-webkit-scrollbar {
+    width: 7px;
+}
+
+#badges::-webkit-scrollbar-track {
+    background: rgba(0, 20, 45, 0.35);
+    border-radius: 10px;
+}
+
+#badges::-webkit-scrollbar-thumb {
+    background: rgba(70, 150, 220, 0.65);
+    border-radius: 10px;
+}
+
+#badges::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 180, 245, 0.85);
+}
+
+/* Jelvények */
+
+#badgeButtons {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+button {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 12px 16px;
+
+    background: var(--button);
+    color: var(--text);
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Alsó gombok */
+
+footer {
+    width: min(1400px, 94%);
+
+    margin: 24px auto 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #badgeSection {
+        grid-column: 1 / -1;
+    }
+
+}
+
+/* Mobil */
+
+@media (max-width: 650px) {
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #badgeSection {
+        grid-column: auto;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+}
+/* ==============================
+   Hős jelvények
+============================== */
+
+.heroBadge {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #173451,
+            #06172b 75%
+        );
+
+    border: 2px solid rgba(255, 212, 59, 0.95);
+
+    border-radius: 50%;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(80, 170, 255, 0.10),
+        0 0 8px rgba(255, 212, 59, 0.12);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+.heroBadge:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, 0.45),
+        0 0 12px rgba(255, 212, 59, 0.25);
+
+}
+.studentActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.studentActions button {
+    flex: 1;
+    font-size: 0.85rem;
+}
+
+#deleteStudentButton {
+    opacity: 0.8;
+}
+/* ==============================
+   Negatív események
+============================== */
+
+#eventButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#eventButtons button {
+    background: #493238;
+}
+
+#eventButtons button:hover {
+    background: #604149;
+}
+
+#events {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.negativeEvent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 12px;
+
+    background: #30242a;
+    border-left: 3px solid #d95c5c;
+
+    border-radius: 8px;
+}
+
+.negativeEvent small {
+    color: var(--muted);
+}
+/* ==============================
+   Tanulók hozzáadása ablak
+============================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+.modalContent {
+    width: min(500px, 90%);
+
+    background: var(--panel);
+
+    padding: 28px;
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modalContent h2 {
+    margin-top: 0;
+
+    color: var(--hero);
+}
+
+.modalContent p {
+    color: var(--muted);
+}
+
+#studentNames {
+    width: 100%;
+    min-height: 220px;
+
+    resize: vertical;
+
+    padding: 14px;
+
+    border: 2px solid #3b4558;
+    border-radius: 10px;
+
+    background: #11151d;
+    color: white;
+
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#studentNames:focus {
+    outline: none;
+
+    border-color: var(--hero);
+}
+#editStudentName {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 2px solid #3b4558;
+    border-radius: 10px;
+
+    background: #11151d;
+    color: white;
+
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#editStudentName:focus {
+    outline: none;
+
+    border-color: var(--hero);
+}
+
+.modalButtons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+/* ==============================
+   Hőskártya lenyitható részei
+============================== */
+
+.collapsibleSection {
+    margin-top: 14px;
+}
+
+.collapseHeader {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.collapseHeader:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.collapseArrow {
+    transition: transform 0.2s ease;
+}
+
+.collapseContent {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 8px 4px;
+}
+
+.collapseContent.collapsed {
+    display: none;
+}
+
+.collapseHeader.collapsed .collapseArrow {
+    transform: rotate(-90deg);
+}
+/* ==============================
+   Lenyitható vezérlőpanelek
+============================== */
+
+.panelToggle {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.panelToggle:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.panelArrow {
+    transition: transform 0.2s ease;
+}
+
+.panelToggle.collapsed .panelArrow {
+    transform: rotate(-90deg);
+}
+
+#badgePanelContent,
+#eventPanelContent {
+    margin-top: 8px;
+}
+
+#badgePanelContent.collapsed,
+#eventPanelContent.collapsed {
+    display: none;
+}
+/* ==============================
+   Jelvény és esemény panelek
+============================== */
+
+#badgeSection,
+#eventSection {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#badgePanelContent,
+#eventPanelContent {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#badgeButtons,
+#eventButtons {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#badgeButtons button,
+#eventButtons button {
+    width: 100%;
+    box-sizing: border-box;
+}
+/* ==============================
+   Események a hőskártyán
+============================== */
+
+#heroEvents {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: auto;
+
+    padding: 12px 16px 14px;
+
+    background: rgba(20, 35, 65, 0.86);
+    border: 2px solid rgba(220, 80, 90, 0.55);
+    border-radius: 14px;
+
+    flex-shrink: 0;
+}
+#heroEvents > h3 {
+    margin: 0 0 8px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.2;
+}
+
+#events {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+
+    min-height: 34px;
+}
+
+.negativeEvent {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(100, 45, 55, 0.45);
+    border: 1px solid rgba(180, 70, 80, 0.7);
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition: transform 0.15s ease;
+}
+
+.negativeEvent:hover {
+    transform: scale(1.12);
+}
+/* ==============================
+   Jobb oldali vezérlőpanel
+============================== */
+
+#controlsSection {
+    grid-column: 3;
+    grid-row: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    align-self: start;
+}
+/* ==============================
+   Fejlődési célok
+============================== */
+
+#goalsSection {
+   
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#goalsSection h2 {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+}
+
+#heroCategories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.heroCategory {
+    padding: 12px 14px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.heroCategoryTitle {
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+.heroCategoryText {
+    color: var(--muted);
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+/* ==============================
+   Középső oszlop
+============================== */
+
+#middleColumn {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    align-self: start;
+}
+
+#middleColumn #heroSection,
+#middleColumn #goalsSection {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#goalsSection {
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 20px;
+}
+.siteLogo {
+    display: block;
+    width: 520px;
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto 8px;
+}
+main {
+    color: var(--text);
+}
+
+main h1,
+main h2,
+main h3,
+main p,
+main label {
+    color: var(--text);
+}
+/* ==============================
+   TesiHős - színes panelek
+============================== */
+
+#studentsSection {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 105, 175, 0.32),
+            rgba(12, 35, 65, 0.96)
+        );
+
+    border: 3px solid rgba(0, 125, 190, 0.85) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 55, 100, 0.7),
+        0 0 18px rgba(0, 150, 220, 0.16),
+        inset 0 0 30px rgba(0, 130, 200, 0.10);
+}
+
+#heroSection {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 120, 220, 0.22),
+            rgba(15, 30, 60, 0.96)
+        );
+
+   border: 3px solid rgba(0, 140, 210, 0.80) !important;
+
+    box-shadow:
+        0 0 15px rgba(0, 130, 210, 0.12),
+        inset 0 0 25px rgba(0, 110, 200, 0.07);
+}
+
+
+
+#badgeSection {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 150, 200, 0.22),
+            rgba(15, 35, 60, 0.96)
+        );
+
+    border: 3px solid rgba(0, 155, 180, 0.75) !important;
+
+    box-shadow:
+        0 0 12px rgba(0, 150, 180, 0.10),
+        inset 0 0 20px rgba(0, 140, 180, 0.06);
+}
+
+
+#eventSection {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(150, 45, 70, 0.20),
+            rgba(35, 25, 40, 0.96)
+        );
+
+    border: 1px solid rgba(230, 75, 100, 0.55) !important;
+
+    box-shadow:
+        0 0 20px rgba(230, 70, 90, 0.10),
+        inset 0 0 25px rgba(220, 60, 80, 0.06);
+}
+
+
+#goalsSection {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 150, 120, 0.18),
+            rgba(20, 40, 45, 0.96)
+        );
+
+    border: 3px solid rgba(40, 155, 115, 0.70) !important;
+
+    box-shadow:
+        0 0 12px rgba(40, 150, 110, 0.08),
+        inset 0 0 20px rgba(40, 140, 105, 0.05);
+}
+
+
+/* A panelcímek maradjanak fehérek */
+
+#studentsSection h2,
+#heroSection h2,
+#badgeSection h2,
+#eventSection h2,
+#goalsSection h2 {
+    color: white !important;
+}
+/* =========================================
+   FEJLŐDÉSI CÉLOK – SZÍNES HŐSKÁRTYÁK
+========================================= */
+
+#goalsSection {
+    padding: 18px;
+}
+
+/* A cím marad */
+#goalsSection h2 {
+    margin: 0 0 14px;
+}
+
+/* Hat kis kártya */
+#goalsSection .goal-card {
+    position: relative;
+
+    min-height: 125px;
+    padding: 16px 14px 12px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    color: white;
+
+    border: 2px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Kis fényes effekt */
+#goalsSection .goal-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,0.28),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.12),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+/* Kártya tartalma legyen a háttér fölött */
+#goalsSection .goal-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover */
+#goalsSection .goal-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================
+   FEJLŐDÉSI CÉLOK – SZÍNES HŐSKÁRTYÁK
+========================================= */
+
+#heroCategories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+
+/* Alapkártya */
+#heroCategories .heroCategory {
+
+    position: relative;
+    height: 175px;
+    min-height: 175px;
+    padding: 16px 14px 13px;
+
+    box-sizing: border-box;
+
+    border-radius: 16px;
+
+    color: white;
+
+    border: 2px solid rgba(255, 255, 255, 0.28);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Fényes felület */
+#heroCategories .heroCategory::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.14),
+            transparent 50%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Tartalom a fényréteg fölött */
+#heroCategories .heroCategoryTitle,
+#heroCategories .heroCategoryText {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+}
+
+
+/* =========================================
+   CÍM
+========================================= */
+
+#heroCategories .heroCategoryTitle {
+    margin-bottom: 8px;
+
+    font-size: 1rem;
+    font-weight: 900;
+
+    text-shadow:
+        0 2px 3px rgba(0,0,0,0.45);
+}
+
+
+/* =========================================
+   LEÍRÁS
+========================================= */
+
+#heroCategories .heroCategoryText {
+    font-size: 0.82rem;
+    line-height: 1.35;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.4);
+}
+
+
+/* =========================================
+   SZÍNEK
+========================================= */
+
+/* 🏃 Mozgáshős */
+#heroCategories .heroCategory:nth-child(1) {
+    background:
+        linear-gradient(
+            145deg,
+            #ffd91a 0%,
+            #ffb300 45%,
+            #e87500 100%
+        );
+
+    border-color: rgba(255, 221, 70, 0.85);
+}
+
+
+/* ❤️ Fair Play Hős */
+#heroCategories .heroCategory:nth-child(2) {
+    background:
+        linear-gradient(
+            145deg,
+            #38d96d 0%,
+            #13b85a 50%,
+            #087c58 100%
+        );
+
+    border-color: rgba(80, 240, 130, 0.80);
+}
+
+
+/* 🤝 Csapathős */
+#heroCategories .heroCategory:nth-child(3) {
+    background:
+        linear-gradient(
+            145deg,
+            #19c5ff 0%,
+            #087fe8 50%,
+            #174fc4 100%
+        );
+
+    border-color: rgba(60, 210, 255, 0.85);
+}
+
+
+/* 🔥 Kitartáshős */
+#heroCategories .heroCategory:nth-child(4) {
+    background:
+        linear-gradient(
+            145deg,
+            #ff9e1c 0%,
+            #ff5b0a 48%,
+            #d52b12 100%
+        );
+
+    border-color: rgba(255, 150, 50, 0.85);
+}
+
+
+/* 🎯 Kihíváshős */
+#heroCategories .heroCategory:nth-child(5) {
+    background:
+        linear-gradient(
+            145deg,
+            #ff547f 0%,
+            #e51d62 50%,
+            #a70d70 100%
+        );
+
+    border-color: rgba(255, 100, 150, 0.85);
+}
+
+
+/* 🧠 Sporttudós */
+#heroCategories .heroCategory:nth-child(6) {
+    background:
+        linear-gradient(
+            145deg,
+            #b54dff 0%,
+            #7c2fe0 50%,
+            #4d1bb5 100%
+        );
+
+    border-color: rgba(190, 100, 255, 0.85);
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+#heroCategories .heroCategory:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+}
+/* =========================================
+   FEJLŐDÉSI CÉLOK – CÍM SZALAG + NAGY IKON
+========================================= */
+
+#heroCategories .heroCategory {
+    padding: 0 14px 14px;
+}
+
+/* A cím legyen külön sötét szalag */
+#heroCategories .heroCategoryTitle {
+    margin: 0 -14px 12px;
+
+    padding: 8px 10px 7px;
+
+    background: rgba(5, 25, 55, 0.88);
+
+    color: #ffffff !important;
+
+    font-size: 1.05rem;
+    font-weight: 900;
+
+    text-align: center;
+
+    border-bottom: 2px solid rgba(255,255,255,0.18);
+
+    text-shadow:
+        0 2px 3px rgba(0,0,0,0.65);
+
+    box-shadow:
+        0 3px 6px rgba(0,0,0,0.25);
+}
+
+
+/* Az ikonok legyenek nagyobbak */
+#heroCategories .heroCategoryTitle::first-letter {
+    font-size: 1.55rem;
+}
+
+
+/* Leírás */
+#heroCategories .heroCategoryText {
+    color: #062b55 !important;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    text-shadow: none;
+}
+/* ==============================
+   🎯 Önértékelés
+============================== */
+
+#selfEvaluationSection {
+    margin-top: 18px;
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 42, 82, 0.96),
+            rgba(12, 58, 105, 0.92)
+        );
+
+    border: 2px solid rgba(0, 180, 255, 0.65);
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 22px rgba(0, 150, 255, 0.12),
+        inset 0 0 25px rgba(0, 100, 200, 0.08);
+
+    box-sizing: border-box;
+}
+
+#selfEvaluationSection h2 {
+    margin: 0 0 14px;
+
+    color: white;
+
+    font-size: 1.35rem;
+    font-weight: 900;
+
+    font-family: "Lobster", "Trebuchet MS", sans-serif;
+}
+
+.selfEvaluationQuestion {
+    margin: 0 0 16px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Három választógomb */
+
+#selfEvaluationOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selfEvaluationOption {
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 16px;
+
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+
+    background: rgba(25, 45, 75, 0.90);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.selfEvaluationOption:hover {
+    transform: translateY(-2px);
+
+    background: rgba(35, 65, 105, 0.95);
+
+    border-color: rgba(255, 212, 59, 0.75);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.selfEvaluationIcon {
+    width: 42px;
+
+    font-size: 1.65rem;
+
+    text-align: center;
+}
+
+.selfEvaluationText {
+    margin-left: 10px;
+
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: white;
+
+    letter-spacing: 0.3px;
+}
+
+/* Kiválasztott állapot */
+
+.selfEvaluationOption.selected {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 120, 210, 0.95),
+            rgba(0, 80, 160, 0.95)
+        );
+
+    border-color: #ffd43b;
+
+    box-shadow:
+        0 0 16px rgba(255, 212, 59, 0.25),
+        inset 0 0 12px rgba(255, 255, 255, 0.06);
+
+    transform: scale(1.015);
+}
+/* ==============================
+   🎯 Önértékelés - lenyitható
+============================== */
+
+#selfEvaluationHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+#selfEvaluationHeader h2 {
+    margin: 0;
+}
+
+#selfEvaluationArrow {
+    color: white;
+    font-size: 0.9rem;
+
+    transition: transform 0.2s ease;
+}
+
+/* A tartalom alapból látható */
+#selfEvaluationContent {
+    margin-top: 16px;
+}
+
+/* Összecsukott állapot */
+#selfEvaluationSection.collapsed #selfEvaluationContent {
+    display: none;
+}
+
+#selfEvaluationSection.collapsed #selfEvaluationArrow {
+    transform: rotate(-90deg);
+}
+/* =====================================================
+   FEJLŐDÉSI CÉLOK – FORGATHATÓ HŐSKÁRTYÁK
+===================================================== */
+
+#heroCategories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+
+/* =====================================================
+   KÁRTYA
+===================================================== */
+
+#heroCategories .heroCategory {
+    position: relative;
+    height: 145px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.heroCategoryInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+/* FORGATÁS */
+
+.heroCategory.flipped .heroCategoryInner {
+    transform: rotateY(180deg);
+}
+
+
+/* =====================================================
+   ELŐLAP + HÁTLAP
+===================================================== */
+
+.heroCategoryFront,
+.heroCategoryBack {
+    position: absolute;
+    inset: 0;
+
+    box-sizing: border-box;
+    padding: 16px;
+
+    border-radius: 16px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   ELŐLAP
+===================================================== */
+
+.heroCategoryFront {
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+
+    border: 2px solid rgba(255,255,255,0.45);
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,0.30),
+        inset 0 0 20px rgba(255,255,255,0.12);
+}
+
+
+/* Fényes felület */
+
+.heroCategoryFront::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.16),
+            transparent 55%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CÍMSZALAG
+===================================================== */
+
+.heroCategoryTitle {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    margin:
+        -16px
+        -16px
+        12px
+        -16px;
+
+    padding:
+        9px
+        16px;
+
+    background: rgba(4, 27, 65, 0.94);
+
+    border-radius:
+        14px
+        14px
+        10px
+        0;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    line-height: 1.1;
+
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,0.8);
+}
+
+
+/* =====================================================
+   LEÍRÁS
+===================================================== */
+
+.heroCategoryText {
+    position: relative;
+    z-index: 2;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,0.65);
+}
+
+
+/* =====================================================
+   KATTINTÁSI SEGÍTSÉG
+===================================================== */
+
+.heroCategoryHint {
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    opacity: 0.9;
+
+    color: white;
+}
+
+
+/* =====================================================
+   HÁTLAP
+===================================================== */
+
+.heroCategoryBack {
+    transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #082d55,
+            #06466f
+        );
+
+    border: 2px solid rgba(255,210,40,0.75);
+
+    box-shadow:
+        inset 0 0 20px rgba(0,180,255,0.18),
+        0 5px 15px rgba(0,0,0,0.30);
+}
+
+
+/* =====================================================
+   HÁTLAP SZÖVEGE
+===================================================== */
+
+.heroCategoryBackTitle {
+    font-size: 19px;
+    font-weight: 900;
+
+    margin-bottom: 4px;
+}
+
+.heroCategoryBackSubtitle {
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    opacity: 0.9;
+}
+
+.heroRequirements {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   6 ÉLÉNK KÁRTYASZÍN
+===================================================== */
+
+#heroCategories .heroCategory:nth-child(1) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #ffd91a,
+            #ffb300,
+            #e87500
+        );
+}
+
+#heroCategories .heroCategory:nth-child(2) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #38d96d,
+            #13b85a,
+            #087c58
+        );
+}
+
+#heroCategories .heroCategory:nth-child(3) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #19c5ff,
+            #087fe8,
+            #174fc4
+        );
+}
+
+#heroCategories .heroCategory:nth-child(4) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #ff9e1c,
+            #ff5b0a,
+            #d52b12
+        );
+}
+
+#heroCategories .heroCategory:nth-child(5) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #ff547f,
+            #e51d62,
+            #a70d70
+        );
+}
+
+#heroCategories .heroCategory:nth-child(6) .heroCategoryFront {
+    background:
+        linear-gradient(
+            135deg,
+            #b54dff,
+            #7c2fe0,
+            #5720b8
+        );
+}
+
+
+/* =====================================================
+   MOBIL
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #heroCategories {
+        grid-template-columns: 1fr;
+    }
+
+    #heroCategories .heroCategory {
+        height: 135px;
+    }
+
+}
+/* =====================================================
+   FEJLŐDÉSI CÉLOK – ÉLÉNK SZÍNEK
+===================================================== */
+
+#heroCategories .heroCategory:nth-child(1),
+#heroCategories .heroCategory:nth-child(1) .heroCategoryFront {
+    background: linear-gradient(135deg, #ffd21c, #ff9f00) !important;
+}
+
+#heroCategories .heroCategory:nth-child(2),
+#heroCategories .heroCategory:nth-child(2) .heroCategoryFront {
+    background: linear-gradient(135deg, #20d968, #0aab68) !important;
+}
+
+#heroCategories .heroCategory:nth-child(3),
+#heroCategories .heroCategory:nth-child(3) .heroCategoryFront {
+    background: linear-gradient(135deg, #19c5ff, #087fe8) !important;
+}
+
+#heroCategories .heroCategory:nth-child(4),
+#heroCategories .heroCategory:nth-child(4) .heroCategoryFront {
+    background: linear-gradient(135deg, #ff9e1c, #ff5b0a) !important;
+}
+
+#heroCategories .heroCategory:nth-child(5),
+#heroCategories .heroCategory:nth-child(5) .heroCategoryFront {
+    background: linear-gradient(135deg, #ff547f, #e51d62) !important;
+}
+
+#heroCategories .heroCategory:nth-child(6),
+#heroCategories .heroCategory:nth-child(6) .heroCategoryFront {
+    background: linear-gradient(135deg, #b54dff, #7c2fe0) !important;
+}
+/* =========================================
+   FEJLŐDÉSI CÉLOK – VÉGSŐ MÉRETEZÉS
+   ========================================= */
+
+#heroCategories .heroCategory {
+    height: 135px;
+}
+
+/* A kártya belső része */
+#heroCategories .heroCategoryInner {
+    height: 100%;
+}
+
+/* ELŐLAP */
+#heroCategories .heroCategoryFront {
+    padding: 16px;
+}
+
+/* Cím – sötét szalag */
+#heroCategories .heroCategoryTitle {
+    font-size: 19px;
+    padding: 7px 14px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+/* Leírás */
+#heroCategories .heroCategoryText {
+    font-size: 15px;
+    line-height: 1.35;
+    color: #082b52;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Kattintási segítség */
+#heroCategories .heroCategoryHint {
+    font-size: 12px;
+    color: #082b52;
+    margin-top: 5px;
+}
+
+/* HÁTLAP */
+#heroCategories .heroCategoryBack {
+    padding: 14px;
+}
+
+/* Hátlap címe */
+#heroCategories .heroCategoryBackTitle {
+    font-size: 18px;
+}
+
+/* Hátlap alcíme */
+#heroCategories .heroCategoryBackSubtitle {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Feltételek */
+#heroCategories .heroRequirements {
+    font-size: 13px;
+    line-height: 1.35;
+    margin-top: 8px;
+}
+
+#heroCategories .heroRequirements div {
+    margin: 2px 0;
+}
+/* ==============================
+   JELVÉNY + DARABSZÁM
+   ============================== */
+
+.heroBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 70px;
+    height: 64px;
+
+    margin: 0 6px;
+
+    color: white;
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+/* A jelvény ikonja */
+.heroBadge .badgeIcon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+    line-height: 1;
+
+    box-sizing: border-box;
+}
+/* A darabszám */
+.heroBadge .badgeCount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 24px;
+
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+
+    position: static;
+}
+/* ==============================
+   JELVÉNYEK – 2 SOR
+   ============================== */
+
+#badges {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Minden jelvény egyetlen egység */
+#badges .heroBadge {
+    min-width: 0;
+    width: auto;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    white-space: nowrap;
+
+    /* NE legyen külön kerete a jelvény+szám egységnek */
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* A körben csak maga a jelvény legyen */
+#badges .badgeIcon {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ffd21c;
+    border-radius: 50%;
+
+    font-size: 30px;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+/* A szám a kör mellett legyen */
+#badges .badgeCount {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+
+    line-height: 1;
+    flex-shrink: 0;
+}
+/* =========================================
+   JOBB OLDALI PANELEK – EGYSÉGES MEGJELENÉS
+   ========================================= */
+
+#badgeSection,
+#selfEvaluationSection,
+#eventSection {
+    box-sizing: border-box;
+}
+
+/* Mindhárom fejléc azonos magasságú */
+#badgeSection .panelToggle,
+#selfEvaluationSection #selfEvaluationHeader,
+#eventSection .panelToggle {
+    min-height: 54px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 14px;
+}
+
+/* Mindhárom cím azonos méretű */
+#badgeSection .panelToggle,
+#eventSection .panelToggle,
+#selfEvaluationSection h2 {
+    font-size: 1.05rem !important;
+    font-weight: 900;
+    color: white !important;
+}
+
+/* Az önértékelés saját fejlécének ne legyen plusz eltérése */
+#selfEvaluationSection h2 {
+    margin: 0 !important;
+}
+
+/* A három panel között azonos távolság */
+#controlsSection {
+    gap: 16px;
+}
+
+/* Ne legyen különböző felső margó */
+#selfEvaluationSection {
+    margin-top: 0;
+}
+
+/* Az ikonok és címek szépen igazodjanak */
+#badgeSection .panelToggle,
+#eventSection .panelToggle,
+#selfEvaluationSection #selfEvaluationHeader {
+    line-height: 1.2;
+}
+/* =========================================
+   HŐSKÁRTYA – ESEMÉNYEK LEGALUL
+   ========================================= */
+
+#heroSection {
+    display: flex;
+    flex-direction: column;
+}
+
+#heroEvents {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+/* =====================================================
+   HŐSKÁRTYA – önértékelési jelvény és események
+   ===================================================== */
+
+#heroCard {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Önértékelés jelvénye a Hőskártya közepén */
+#heroSelfEvaluationBadge {
+    width: 72px;
+    height: 72px;
+
+    margin: 18px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.4rem;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 212, 59, 0.08)
+        ),
+        rgba(15, 45, 80, 0.92);
+
+    border: 3px solid #ffd43b;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px rgba(255, 212, 59, 0.25),
+        inset 0 0 12px rgba(255, 255, 255, 0.05);
+
+    flex-shrink: 0;
+}
+
+/* Események mindig a Hőskártya alján */
+#heroEvents {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+}
+/* Önértékelési számlálók egy sorban */
+#heroSelfEvaluationCounts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin: 8px auto 14px;
+}
+
+.heroSelfEvaluationCount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-width: 90px;
+    padding: 8px 14px;
+
+    background: rgba(10, 35, 65, 0.88);
+
+    border: 2px solid rgba(255, 212, 59, 0.8);
+    border-radius: 12px;
+
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.heroSelfEvaluationCount span:first-child {
+    font-size: 1.3rem;
+}
+.heroSelfEvaluationCount {
+    cursor: pointer;
+}
+#heroName {
+    font-family: "Caveat", cursive;
+    font-weight: 700;
+}
+/* =========================================
+   FEJLŐDÉSI CÉLOK – VÉGLEGES KÁRTYASTÍLUS
+========================================= */
+
+/* Külső kártya – ne legyen külön háttér és padding */
+#heroCategories .heroCategory {
+    height: 160px;
+    min-height: 160px;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: none !important;
+
+    overflow: visible;
+}
+
+/* A forgatható belső rész töltse ki teljesen a kártyát */
+#heroCategories .heroCategoryInner {
+    width: 100%;
+    height: 100%;
+}
+
+/* Előlap és hátlap */
+#heroCategories .heroCategoryFront,
+#heroCategories .heroCategoryBack {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Előlap */
+#heroCategories .heroCategoryFront {
+    padding: 14px 16px !important;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white !important;
+}
+
+/* Cím – széles sötét fejléc */
+#heroCategories .heroCategoryTitle {
+    width: calc(100% + 32px);
+
+    margin: -14px -16px 12px -16px !important;
+
+    padding: 9px 14px;
+
+    box-sizing: border-box;
+
+    background: rgba(4, 27, 65, 0.92);
+
+    color: white !important;
+
+    border-radius: 14px 14px 10px 0;
+
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    line-height: 1.15;
+
+    flex-shrink: 0;
+
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Leírás – FEHÉR */
+#heroCategories .heroCategoryText {
+    color: #0c2a42 !important;
+
+    font-size: 1.2rem;
+    font-weight: 900;
+    line-height: 1.35;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-shadow: none;
+}
+
+/* "Kattints..." */
+#heroCategories .heroCategoryHint {
+    color: white !important;
+
+    margin-top: auto;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.5);
+}
+/* ------------------------------
+   Osztály hozzáadása ablak
+------------------------------ */
+
+#addClassModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+#addClassModal .modalContent {
+
+    width: 360px;
+    max-width: 90%;
+
+    padding: 25px;
+
+    background: #102b4a;
+
+    border: 2px solid #00a9e8;
+    border-radius: 15px;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+    color: white;
+}
+
+#addClassModal h3 {
+
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 24px;
+}
+
+#addClassModal label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+#newClassName {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    border: 2px solid #5c7895;
+
+    background: #202d40;
+
+    color: white;
+
+    font-size: 18px;
+}
+
+#newClassName:focus {
+
+    outline: none;
+
+    border-color: #00a9e8;
+}
+
+#addClassModal .modalButtons {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+#addClassModal .modalButtons button {
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+#cancelAddClassButton {
+
+    background: #39475b;
+    color: white;
+}
+
+#saveAddClassButton {
+
+    background: #168bd1;
+    color: white;
+}
+
+#cancelAddClassButton:hover,
+#saveAddClassButton:hover {
+
+    filter: brightness(1.15);
+}
+/* ------------------------------
+   Osztályválasztó
+------------------------------ */
+
+.class-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* Osztály felirat + választó */
+
+.class-select-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.class-controls label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Osztály választómező */
+
+#classSelect {
+    font-size: 18px;
+    font-weight: bold;
+
+    padding: 5px 10px;
+
+    min-width: 95px;
+
+    background: #d9e4f2;
+    color: #18263a;
+
+    border: 2px solid #4c8fc7;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+/* Hozzáadás + törlés */
+
+.class-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Mindkét gomb */
+
+.class-buttons button {
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 7px 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* Hozzáadás */
+
+#addClassButton {
+    background: #34445c;
+    color: white;
+}
+
+/* Törlés */
+
+#deleteClassButton {
+    background: #34445c;
+    color: white;
+}
+/* ==============================
+   ELÉRT SZINTEK
+============================== */
+
+#earnedLevelsSection {
+    margin: 12px 0 10px 0;
+    padding: 10px 14px 14px 14px;
+
+    background: rgba(5, 25, 55, 0.88);
+
+    border: 3px solid #f5c400;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 10px rgba(245, 196, 0, 0.45),
+        inset 0 0 15px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+}
+
+.earnedLevelsTitle {
+    font-size: 21px;
+    font-weight: bold;
+    color: #ffd83d;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 1px 2px #000,
+        0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+#earnedLevels {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Egy megszerzett szint */
+
+.earnedLevel {
+    display: flex;
+    align-items: center;
+
+    min-height: 58px;
+
+    padding: 7px 12px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(10, 40, 75, 0.95),
+        rgba(20, 55, 90, 0.95)
+    );
+
+    border: 2px solid #f5c400;
+    border-radius: 13px;
+
+    box-shadow:
+        0 0 8px rgba(245, 196, 0, 0.3);
+}
+
+/* Bal oldali ikon */
+
+.earnedLevelIcon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 29px;
+
+    margin-right: 12px;
+
+    border: 2px solid #f5c400;
+    border-radius: 50%;
+
+    background: #102d50;
+
+    flex-shrink: 0;
+}
+
+/* Szöveg */
+
+.earnedLevelInfo {
+    text-align: left;
+    flex: 1;
+}
+
+.earnedLevelName {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.earnedLevelRank {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffd83d;
+
+    margin-top: 2px;
+}
+
+/* Jobb oldali jelvény */
+
+.earnedLevelMedal {
+    font-size: 35px;
+
+    margin-left: 10px;
+
+    filter:
+        drop-shadow(0 0 3px rgba(255, 215, 0, 0.45));
+}
+/* =====================================================
+   TANULÓLISTA – CSAK 6 TANULÓ LÁTSZÓDJON
+===================================================== */
+
+#studentList {
+    max-height: 330px;
+    overflow-y: auto;
+}
+
+
+/* =====================================================
+   FEJLŐDÉSI CÉLOK – KIS TÁVOLSÁG A NÉVSOR UTÁN
+===================================================== */
+
+#goalsSection {
+    margin-top: 14px;
+}
+
+
+/* =====================================================
+   KESKENYEBB CÉLKÁRTYÁK – KISEBB BETŰ
+===================================================== */
+
+/* Előlapi cím */
+#heroCategories .heroCategoryTitle {
+    font-size: 0.90rem;
+    line-height: 1.15;
+}
+
+/* Előlapi leírás */
+#heroCategories .heroCategoryText {
+    font-size: 0.78rem;
+    line-height: 1.30;
+}
+
+/* Előlapi kattintási segítség */
+#heroCategories .heroCategoryHint {
+    font-size: 0.68rem;
+}
+
+
+/* Hátoldali cím */
+#heroCategories .heroCategoryBackTitle {
+    font-size: 0.90rem;
+    line-height: 1.15;
+}
+
+/* Hátoldali alcím */
+#heroCategories .heroCategoryBackSubtitle {
+    font-size: 0.72rem;
+}
+
+/* Hátoldali értékek */
+#heroCategories .heroRequirements {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+/* Hátoldali szint */
+#heroCategories .goalLevel {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin-top: 8px;
+}
+
+/* Hátoldali üzenet */
+#heroCategories .goalLevelMessage {
+    font-size: 0.70rem;
+    line-height: 1.25;
+}
+/* =====================================================
+   FEJLŐDÉSI CÉLOK – A TANULÓLISTA TELJES SZÉLESSÉGE
+===================================================== */
+
+#goalsSection {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* A célkártyák kapjanak több helyet */
+#heroCategories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+
+/* A célkártyák legyenek kicsit tágasabbak */
+#heroCategories .heroCategory {
+    min-width: 0;
+}
+
+
+/* Kényelmesebb szövegtördelés a szélesebb kártyákon */
+#heroCategories .heroCategoryText {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    font-weight: 900;
+}
+
+#heroCategories .heroCategoryTitle {
+    font-size: 0.95rem;
+}
+/* =====================================================
+   FEJLŐDÉSI CÉLOK – A TANULÓK ALATT
+===================================================== */
+
+#goalsSection {
+    grid-column: 1;
+    grid-row: 2;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 14px;
+}
+/* =========================================
+   FEJLŐDÉSI CÉLOK – SZÉLESÍTÉS
+========================================= */
+
+#goalsSection {
+    width: calc(100% + 56px);
+    box-sizing: border-box;
+    margin-left: -28px;
+    margin-right: -28px;
+}
+/* I. szint */
+.earnedLevel.levelOne .earnedLevelRank {
+    color: #ffd83d;
+}
+
+/* II. szint */
+.earnedLevel.levelTwo .earnedLevelRank {
+    color: #4dd0e1;
+}

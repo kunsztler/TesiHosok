@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tesi Hősök</title>
+
+    
+<link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap"
+    rel="stylesheet"
+>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
+</head>
+
+<body>
+
+   <header>
+
+    <img
+        src="images/tesihos-logo.png"
+        alt="TesiHősök"
+        class="siteLogo"
+    >
+
+    <p>Gyűjts jelvényeket, fejlődj és válj hőssé!</p>
+
+</header>
+
+    <main>
+
+        <section id="studentsSection">
+
+            <h2>Tanulók</h2>
+
+    <div id="classSelector" class="class-controls">
+
+    <div class="class-select-row">
+        <label for="classSelect">Osztály:</label>
+
+        <select id="classSelect"></select>
+    </div>
+
+    <div class="class-buttons">
+
+        <button id="addClassButton">
+            ➕ Osztály hozzáadása
+        </button>
+
+        <button id="deleteClassButton">
+            🗑️ Osztály törlése
+        </button>
+
+    </div>
+
+</div>
+
+            <div id="studentList">
+                <!-- A tanulók ide kerülnek -->
+            </div>
+
+            <button id="addStudentButton">
+                + Tanuló hozzáadása
+            </button>
+            <div id="studentModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Tanulók hozzáadása</h2>
+
+        <p>
+            Írd be a neveket, tanulónként egy sorba.
+        </p>
+
+        <textarea
+            id="studentNames"
+            placeholder="Anna&#10;Bence&#10;Csaba&#10;Dóri"
+        ></textarea>
+
+        <div class="modalButtons">
+
+            <button id="cancelStudentButton">
+                Mégse
+            </button>
+
+            <button id="saveStudentsButton">
+                ✓ Hozzáadás
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+            <div class="studentActions">
+
+    <button id="editStudentButton">
+        ✏️ Név módosítása
+    </button>
+
+    <button id="deleteStudentButton">
+        🗑️ Tanuló törlése
+    </button>
+
+</div>
+
+        
+        <!-- ==============================
+     Fejlődési célok
+============================== -->
+
+<section id="goalsSection">
+
+    <h2>Fejlődési célok</h2>
+
+    <div id="heroCategories">
+
+ <!-- 1. MOZGÁSHŐS -->
+<div class="heroCategory">
+    <div class="heroCategoryInner">
+
+        <div class="heroCategoryFront">
+
+            <div class="heroCategoryTitle">
+                🏃 MOZGÁSHŐS
+            </div>
+
+            <div class="heroCategoryText">
+                Gyorsaság, ügyesség, erő, állóképesség.
+            </div>
+
+            <div class="heroCategoryHint">
+                ↻ Kattints a részletekért
+            </div>
+
+        </div>
+
+
+        <div class="heroCategoryBack">
+
+            <div class="heroCategoryBackTitle">
+                🏃 MOZGÁSHŐS
+            </div>
+
+
+            <div class="heroRequirements">
+
+                <div>
+                    🏃 Teljesítmény:
+                    <span id="movementPerformanceCount">0</span>
+                    /
+                    <span id="movementPerformanceTarget">5</span>
+                </div>
+
+              <div>
+    🤸 Órai munka:
+    <span id="movementClassworkCount">0</span>
+    /
+    <span id="movementClassworkTarget">3</span>
+</div>
+
+            </div>
+
+
+            <div
+                id="movementLevel"
+                class="heroLevel"
+            >
+                I. SZINT
+            </div>
+
+
+            <div
+                id="movementLevelMessage"
+                class="heroLevelMessage"
+            ></div>
+
+        </div>
+
+    </div>
+</div>
+
+
+        <!-- 2. FAIR PLAY HŐS -->
+        <div class="heroCategory">
+            <div class="heroCategoryInner">
+
+                <div class="heroCategoryFront">
+                    <div class="heroCategoryTitle">
+                        ❤️ FAIR PLAY HŐS
+                    </div>
+
+                    <div class="heroCategoryText">
+                        Sportszerűség, szabályok betartása, konfliktuskezelés.
+                    </div>
+
+                    <div class="heroCategoryHint">
+                        ↻ Kattints a részletekért
+                    </div>
+                </div>
+
+             <div class="heroCategoryBack">
+
+    <div class="heroCategoryBackTitle">
+        ❤️ FAIR PLAY HŐS
+    </div>
+
+
+    <div class="heroRequirements">
+
+ <div>
+    ❤️ Sportszerűség:
+    <span id="fairPlaySportsmanshipCount">0</span>
+</div>
+
+<div>
+    ⭐ Csillag:
+    <span id="fairPlayStarCount">0</span>
+</div>
+
+    </div>
+
+    <div
+        id="fairPlayLevel"
+        class="goalLevel"
+    >
+        I. SZINT
+    </div>
+
+    <div
+        id="fairPlayLevelMessage"
+        class="goalLevelMessage"
+    ></div>
+
+</div>
+
+            </div>
+        </div>
+
+
+        <!-- 3. CSAPATHŐS -->
+        <div class="heroCategory">
+            <div class="heroCategoryInner">
+
+                <div class="heroCategoryFront">
+                    <div class="heroCategoryTitle">
+                        🤝 CSAPATHŐS
+                    </div>
+
+                    <div class="heroCategoryText">
+                        Segít a társának, együttműködik, bátorít másokat.
+                    </div>
+
+                    <div class="heroCategoryHint">
+                        ↻ Kattints a részletekért
+                    </div>
+                </div>
+
+              <div class="heroCategoryBack">
+
+    <div class="heroCategoryBackTitle">
+        🤝 CSAPATHŐS
+    </div>
+
+
+    <div class="heroRequirements">
+
+       <div>
+    🤝 Segítőkészség:
+    <span id="teamHelpCount">0</span> /
+    <span id="teamHelpTarget">5</span>
+</div>
+
+<div>
+    ⭐ Csillag:
+    <span id="teamStarCount">0</span> /
+    <span id="teamStarTarget">3</span>
+</div>
+
+    </div>
+
+    <div
+        id="teamLevel"
+        class="goalLevel"
+    >
+        I. SZINT
+    </div>
+
+</div>
+
+            </div>
+        </div>
+
+
+        <!-- 4. KITARTÁSHŐS -->
+        <div class="heroCategory">
+            <div class="heroCategoryInner">
+
+                <div class="heroCategoryFront">
+                    <div class="heroCategoryTitle">
+                        🔥 KITARTÁSHŐS
+                    </div>
+
+                    <div class="heroCategoryText">
+                        Nem adja fel, próbálkozik, fejlődik.
+                    </div>
+
+                    <div class="heroCategoryHint">
+                        ↻ Kattints a részletekért
+                    </div>
+                </div>
+
+                <div class="heroCategoryBack">
+
+    <div class="heroCategoryBackTitle">
+        🔥 KITARTÁSHŐS
+    </div>
+
+    <div class="heroRequirements">
+
+       <div>
+    🔥 Kitartás:
+    <span id="persistenceCount">0</span> /
+    <span id="persistenceTarget">5</span>
+</div>
+
+<div>
+    🤸 Órai munka:
+    <span id="persistenceClassworkCount">0</span> /
+    <span id="persistenceClassworkTarget">3</span>
+</div>
+
+    </div>
+
+    <div
+        id="persistenceLevel"
+        class="goalLevel"
+    >
+        I. SZINT
+    </div>
+
+</div>
+
+            </div>
+        </div>
+
+
+        <!-- 5. KIHÍVÁSHŐS -->
+        <div class="heroCategory">
+            <div class="heroCategoryInner">
+
+                <div class="heroCategoryFront">
+                    <div class="heroCategoryTitle">
+                        🎯 KIHÍVÁSHŐS
+                    </div>
+
+                    <div class="heroCategoryText">
+                        Extra feladatokat teljesít.
+                    </div>
+
+                    <div class="heroCategoryHint">
+                        ↻ Kattints a részletekért
+                    </div>
+                </div>
+
+                <div class="heroCategoryBack">
+
+    <div class="heroCategoryBackTitle">
+        🎯 KIHÍVÁSHŐS
+    </div>
+
+    <div class="heroRequirements">
+
+        <div>
+         🎯 Kihívás:
+<span id="challengeCount">0</span> /
+<span id="challengeTarget">5</span>
+        </div>
+
+        <div>
+           ⭐ Csillag:
+<span id="challengeStarCount">0</span> /
+<span id="challengeStarTarget">3</span>
+        </div>
+
+    </div>
+
+    <div
+        id="challengeLevel"
+        class="goalLevel"
+    >
+        I. SZINT
+    </div>
+
+</div>
+
+            </div>
+        </div>
+
+
+        <!-- 6. SPORTTUDÓS -->
+        <div class="heroCategory">
+            <div class="heroCategoryInner">
+
+                <div class="heroCategoryFront">
+                    <div class="heroCategoryTitle">
+                        🧠 SPORTTUDÓS
+                    </div>
+
+                    <div class="heroCategoryText">
+                        Szabályismeret, taktika, sportismeret, egészséges életmód.
+                    </div>
+
+                    <div class="heroCategoryHint">
+                        ↻ Kattints a részletekért
+                    </div>
+                </div>
+
+                <div class="heroCategoryBack">
+
+    <div class="heroCategoryBackTitle">
+        🧠 SPORTTUDÓS
+    </div>
+
+    <div class="heroRequirements">
+
+        <div>
+          🧠 Szabály- és egészséges életmód ismeret:
+<span id="sportKnowledgeCount">0</span> /
+<span id="sportKnowledgeTarget">5</span>
+        </div>
+
+        <div>
+            ⭐ Csillag:
+<span id="sportKnowledgeStarCount">0</span> /
+<span id="sportKnowledgeStarTarget">3</span>
+        </div>
+
+    </div>
+
+    <div
+        id="sportKnowledgeLevel"
+        class="goalLevel"
+    >
+        I. SZINT
+    </div>
+
+</div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</section>
+<div id="middleColumn">
+
+    <section id="heroSection">
+
+        <h2>Hőskártya</h2>
+
+        <div id="heroCard">
+
+            <h3 id="heroName">
+                Válassz egy tanulót!
+            </h3>
+
+           <div id="badges">
+    <!-- Jelvények ide kerülnek -->
+</div>
+
+<div id="heroSelfEvaluationBadge">
+    🏆
+</div>
+
+<div id="heroSelfEvaluationCounts">
+    <div class="heroSelfEvaluationCount">
+        <span>🏆</span>
+        <span id="heroSelfEvaluationHeroCount">0</span>
+    </div>
+
+    <div class="heroSelfEvaluationCount">
+        <span>💪</span>
+        <span id="heroSelfEvaluationGoodCount">0</span>
+    </div>
+
+    <div class="heroSelfEvaluationCount">
+        <span>🌱</span>
+        <span id="heroSelfEvaluationDevelopingCount">0</span>
+    </div>
+</div>
+<!-- ==============================
+     Elért fejlődési szintek
+============================== -->
+
+<div id="earnedLevelsSection">
+
+    <div class="earnedLevelsTitle">
+        🏆 ELÉRT SZINTEK
+    </div>
+
+    <div id="earnedLevels"></div>
+
+</div>
+
+<div id="heroEvents">
+
+                <h3>🔴 Események</h3>
+
+                <div id="events">
+                    <!-- A negatív események ide kerülnek -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+</div>
+
+
+<!-- ==============================
+     Jelvények és események
+============================== -->
+
+<div id="controlsSection">
+
+    <section id="badgeSection">
+
+        <button
+            id="badgePanelToggle"
+            class="panelToggle"
+            type="button"
+        >
+            <span>🏅 Jelvény adása</span>
+            <span class="panelArrow">▼</span>
+        </button>
+
+        <div id="badgePanelContent">
+
+            <div id="badgeButtons">
+    <button>⭐ Csillag</button>
+    <button>❤️ Sportszerűség</button>
+    <button>🤝 Segítőkészség</button>
+    <button>🔥 Kitartás</button>
+    <button>🎯 Kihívás</button>
+    <button>🏃 Teljesítmény</button>
+    <button>🤸 Órai munka</button>
+    <button>🧠 Szabály- és egészséges életmód ismeret</button>
+</div>
+
+        </div>
+
+    </section>
+    <!-- ==============================
+     Önértékelés
+============================== -->
+
+<section id="selfEvaluationSection">
+
+    <div id="selfEvaluationHeader">
+        <h2>🪞 Önértékelés</h2>
+        <span id="selfEvaluationArrow">▼</span>
+    </div>
+
+    <div id="selfEvaluationContent">
+
+        <p class="selfEvaluationQuestion">
+            Hogyan éreztem magam ma az órán?
+        </p>
+
+        <div id="selfEvaluationOptions">
+
+            <button class="selfEvaluationOption" data-value="hero">
+                <span class="selfEvaluationIcon">🏆</span>
+                <span class="selfEvaluationText">HŐS VOLTAM</span>
+            </button>
+
+            <button class="selfEvaluationOption" data-value="good">
+                <span class="selfEvaluationIcon">💪</span>
+                <span class="selfEvaluationText">JÓ ÚTON VAGYOK</span>
+            </button>
+
+            <button class="selfEvaluationOption" data-value="developing">
+                <span class="selfEvaluationIcon">🌱</span>
+                <span class="selfEvaluationText">FEJLŐDÖM</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <section id="eventSection">
+
+        <button
+            id="eventPanelToggle"
+            class="panelToggle"
+            type="button"
+        >
+            <span>🔴 Esemény rögzítése</span>
+            <span class="panelArrow">▼</span>
+        </button>
+
+        <div id="eventPanelContent">
+
+            <div id="eventButtons">
+
+                <button>⚠️ Verekedés</button>
+                <button>🧱 Rongálás</button>
+                <button>🚫 Sportszerűtlenség</button>
+                <button>📢 Zavaró viselkedés</button>
+                <button>👕 Felszerelés hiánya</button>
+                <button>📜 Szabályszegés</button>
+
+            </div>
+
+        </div>
+
+    </section>
+    
+
+</div>
+</section>
+
+</main>
+
+    </main>
+    <div id="editStudentModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Név módosítása</h2>
+
+        <p>
+            Módosítsd a tanuló nevét.
+        </p>
+
+        <input
+            type="text"
+            id="editStudentName"
+            placeholder="Tanuló neve"
+        >
+
+        <div class="modalButtons">
+
+            <button id="cancelEditStudentButton">
+                Mégse
+            </button>
+
+            <button id="saveEditStudentButton">
+                ✓ Mentés
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="deleteStudentModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Tanuló törlése</h2>
+
+        <p id="deleteStudentMessage">
+            Biztosan törölni szeretnéd ezt a tanulót?
+        </p>
+
+        <div class="modalButtons">
+
+            <button id="cancelDeleteStudentButton">
+                Mégse
+            </button>
+
+            <button id="confirmDeleteStudentButton">
+                🗑️ Törlés
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="deleteBadgeModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Jelvény visszavonása</h2>
+
+        <p id="deleteBadgeMessage">
+            Biztosan vissza szeretnéd vonni ezt a jelvényt?
+        </p>
+
+        <div class="modalButtons">
+
+            <button id="cancelDeleteBadgeButton">
+                Mégse
+            </button>
+
+            <button id="confirmDeleteBadgeButton">
+                🗑️ Visszavonás
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="deleteSelfEvaluationModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Önértékelés visszavonása</h2>
+
+        <p id="deleteSelfEvaluationMessage">
+            Biztosan vissza szeretnéd vonni ezt az önértékelést?
+        </p>
+
+        <div class="modalButtons">
+
+            <button id="cancelDeleteSelfEvaluationButton">
+                Mégse
+            </button>
+
+            <button id="confirmDeleteSelfEvaluationButton">
+                🗑️ Visszavonás
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="deleteEventModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Esemény visszavonása</h2>
+
+        <p id="deleteEventMessage">
+            Biztosan vissza szeretnéd vonni ezt az eseményt?
+        </p>
+
+        <div class="modalButtons">
+
+            <button id="cancelDeleteEventButton">
+                Mégse
+            </button>
+
+            <button id="confirmDeleteEventButton">
+                🗑️ Visszavonás
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <footer>
+
+        <button id="exportButton">
+            💾 Adatok mentése
+        </button>
+
+        <button id="importButton">
+            📂 Adatok betöltése
+        </button>
+
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+
+    <!-- ------------------------------
+     Osztály hozzáadása ablak
+------------------------------ -->
+
+<div id="addClassModal" class="modal">
+
+    <div class="modalContent">
+
+        <h3>➕ Új osztály</h3>
+
+        <label for="newClassName">
+            Osztály neve:
+        </label>
+
+        <input
+            type="text"
+            id="newClassName"
+            placeholder="pl. 7.B"
+        >
+
+        <div class="modalButtons">
+
+            <button id="cancelAddClassButton">
+                Mégse
+            </button>
+
+            <button id="saveAddClassButton">
+                Hozzáadás
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="selectStudentModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>Tanuló kiválasztása</h2>
+
+        <p>Először válassz ki egy tanulót!</p>
+
+        <div class="modalButtons">
+            <button id="closeSelectStudentButton">
+                Rendben
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
