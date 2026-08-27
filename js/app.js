@@ -2553,3 +2553,27 @@ document.querySelectorAll(".heroCategory").forEach(card => {
     });
 
 });
+// ------------------------------
+// Teljes képernyő
+// ------------------------------
+
+const fullscreenButton =
+    document.getElementById("fullscreenButton");
+
+if (fullscreenButton) {
+
+    fullscreenButton.addEventListener("click", () => {
+
+        if (!document.fullscreenElement) {
+
+            document.documentElement.requestFullscreen();
+
+        } else {
+
+            document.exitFullscreen();
+
+        }
+
+    });
+
+}
