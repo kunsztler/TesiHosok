@@ -2773,7 +2773,7 @@ main label {
 
     #controlsSection {
         grid-column: 1 / -1;
-        grid-row: 2;
+        grid-row: 3;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
@@ -2782,6 +2782,13 @@ main label {
 
     #controlsSection > section {
         min-width: 0;
+    }
+
+    #goalsSection {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        margin: 0;
     }
 
     section {
@@ -2839,5 +2846,74 @@ main label {
     .siteLogo {
         width: 380px;
         max-width: 80%;
+    }
+}
+
+
+/* =====================================================
+   TABLET ÁLLÓ – sorrend: tanulók → Hőskártya → célok → vezérlők
+===================================================== */
+@media (min-width: 651px) and (max-width: 820px) {
+
+    #studentsSection {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #middleColumn {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #goalsSection {
+        grid-column: 1;
+        grid-row: 3;
+        width: 100%;
+        margin: 0;
+    }
+
+    #controlsSection {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    /* Álló tableten a célkártyák szövege legyen kompaktabb. */
+    #heroCategories .heroCategoryTitle {
+        font-size: 0.78rem;
+        line-height: 1.1;
+    }
+
+    #heroCategories .heroCategoryText {
+        font-size: 0.72rem;
+        line-height: 1.2;
+    }
+
+    #heroCategories .heroCategoryHint {
+        font-size: 0.58rem;
+    }
+
+    #heroCategories .heroCategoryBackTitle {
+        font-size: 0.78rem;
+        line-height: 1.1;
+    }
+
+    #heroCategories .heroCategoryBackSubtitle {
+        font-size: 0.64rem;
+    }
+
+    #heroCategories .heroRequirements {
+        font-size: 0.76rem;
+        line-height: 1.25;
+    }
+
+    #heroCategories .goalLevel {
+        font-size: 0.76rem;
+        line-height: 1.15;
+        margin-top: 5px;
+    }
+
+    #heroCategories .goalLevelMessage {
+        font-size: 0.58rem;
+        line-height: 1.15;
     }
 }
