@@ -2577,3 +2577,49 @@ if (fullscreenButton) {
     });
 
 }
+
+// ------------------------------
+// Megjelenítési mód
+// ------------------------------
+
+const settingsButton = document.getElementById("settingsButton");
+const displaySettings = document.getElementById("displaySettings");
+const displayModeButtons = document.querySelectorAll(".display-mode-button");
+
+function applyDisplayMode(mode) {
+    document.body.classList.remove("laptop-mode", "tablet-mode");
+    document.body.classList.add(`${mode}-mode`);
+    localStorage.setItem("tesihosDisplayMode", mode);
+
+    displayModeButtons.forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.displayMode === mode
+        );
+    });
+}
+
+const savedDisplayMode = localStorage.getItem("tesihosDisplayMode") || "laptop";
+applyDisplayMode(savedDisplayMode);
+
+if (settingsButton && displaySettings) {
+    settingsButton.addEventListener("click", event => {
+        event.stopPropagation();
+        displaySettings.hidden = !displaySettings.hidden;
+    });
+
+    displaySettings.addEventListener("click", event => {
+        event.stopPropagation();
+    });
+
+    document.addEventListener("click", () => {
+        displaySettings.hidden = true;
+    });
+}
+
+displayModeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        applyDisplayMode(button.dataset.displayMode);
+        displaySettings.hidden = true;
+    });
+});

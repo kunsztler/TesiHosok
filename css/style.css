@@ -2747,29 +2747,208 @@ main label {
     color: white;
 }
 /* =====================================================
-   TABLET FEKVŐ – HŐSKÁRTYA KISEBB BETŰMÉRET
-   Csak a fekvő tablet nézetet érinti.
-   Az elrendezéshez nem nyúlunk.
+   MEGJELENÍTÉSI MÓD – LAPTOP / TABLET
+   A felhasználó a fogaskeréknél választhat.
 ===================================================== */
+
+#settingsButton {
+    position: fixed;
+    top: 12px;
+    right: 62px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+
+    background: rgba(10, 30, 55, 0.35);
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(3px);
+}
+
+#settingsButton:hover {
+    background: rgba(10, 30, 55, 0.55);
+    color: white;
+}
+
+.display-settings {
+    position: fixed;
+    top: 62px;
+    right: 12px;
+    width: 190px;
+    padding: 10px;
+
+    background: rgba(8, 24, 45, 0.96);
+    border: 1px solid rgba(0, 160, 220, 0.45);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    z-index: 10000;
+}
+
+.display-settings-title {
+    color: white;
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 4px 8px 8px;
+}
+
+.display-mode-button {
+    width: 100%;
+    margin: 4px 0;
+    padding: 9px 10px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.88rem;
+}
+
+.display-mode-button.active {
+    outline: 2px solid rgba(255, 216, 61, 0.7);
+}
+
+/* Tablet mód – fekvő tablet */
 @media (min-width: 821px) and (max-width: 1100px) {
-
-    #heroName {
-        font-size: 2.5rem;
+    body.tablet-mode main {
+        width: 96%;
+        grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+        gap: 16px;
     }
 
-    .heroBadge {
-        font-size: 1.7rem;
+    body.tablet-mode #studentsSection {
+        grid-column: 1;
+        grid-row: 1;
     }
 
-    .heroSelfEvaluationCount {
-        font-size: 1rem;
+    body.tablet-mode #middleColumn {
+        grid-column: 2;
+        grid-row: 1;
+        gap: 16px;
+        min-width: 0;
     }
 
-    .heroSelfEvaluationCount span:first-child {
-        font-size: 1.15rem;
+    body.tablet-mode #controlsSection {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        min-width: 0;
     }
 
-    #heroEvents > h3 {
-        font-size: 0.82rem;
+    body.tablet-mode #controlsSection > section {
+        min-width: 0;
     }
+
+    body.tablet-mode section {
+        padding: 18px;
+    }
+
+    body.tablet-mode #studentList {
+        max-height: 360px;
+    }
+
+    body.tablet-mode .siteLogo {
+        width: 440px;
+        max-width: 82%;
+    }
+
+    body.tablet-mode #heroCategories {
+        gap: 10px;
+    }
+
+    body.tablet-mode .heroCategory {
+        height: 120px;
+    }
+
+}
+
+/* Tablet mód – álló / keskeny tablet */
+@media (min-width: 651px) and (max-width: 820px) {
+    body.tablet-mode main {
+        width: 96%;
+        grid-template-columns: 1fr;
+    }
+
+    body.tablet-mode #studentsSection {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    body.tablet-mode #middleColumn {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+    }
+
+    body.tablet-mode #controlsSection {
+        grid-column: 1;
+        grid-row: 3;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    body.tablet-mode #studentList {
+        max-height: 280px;
+    }
+
+    body.tablet-mode .siteLogo {
+        width: 380px;
+        max-width: 80%;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET MÓD – FEJLŐDÉSI CÉLOK KISEBB BETŰMÉRETE
+   Csak a célkártyák szövegét módosítja.
+   Az elrendezéshez nem nyúl.
+===================================================== */
+
+body.tablet-mode #heroCategories .heroCategoryTitle {
+    font-size: 0.85rem;
+    line-height: 1.15;
+}
+
+body.tablet-mode #heroCategories .heroCategoryText {
+    font-size: 0.82rem;
+    line-height: 1.28;
+}
+
+body.tablet-mode #heroCategories .heroCategoryHint {
+    font-size: 0.62rem;
+}
+
+body.tablet-mode #heroCategories .heroCategoryBackTitle {
+    font-size: 0.85rem;
+    line-height: 1.15;
+}
+
+body.tablet-mode #heroCategories .heroCategoryBackSubtitle {
+    font-size: 0.68rem;
+}
+
+body.tablet-mode #heroCategories .heroRequirements {
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+body.tablet-mode #heroCategories .goalLevel {
+    font-size: 0.82rem;
+    line-height: 1.2;
+}
+
+body.tablet-mode #heroCategories .goalLevelMessage {
+    font-size: 0.62rem;
+    line-height: 1.2;
 }
