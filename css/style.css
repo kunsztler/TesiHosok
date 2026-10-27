@@ -2952,3 +2952,267 @@ body.tablet-mode #heroCategories .goalLevelMessage {
     font-size: 0.62rem;
     line-height: 1.2;
 }
+
+
+/* ==============================
+   Hőskártya kiemelt nézete
+   Kattintásra csak a Hőskártya marad látható.
+============================== */
+/* A kiemelés gomb a Hőskártya panel sarkához tartozik. */
+#heroSection {
+    position: relative;
+}
+
+#heroCardFocusButton,
+#heroCardFocusToggleButton {
+    z-index: 10003;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 10px;
+    background: rgba(10, 30, 55, 0.90);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#heroCardFocusButton {
+    position: fixed;
+    display: none;
+    top: 10px;
+    right: 12px;
+}
+
+#heroCardFocusToggleButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    height: 40px;
+    padding: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.hero-card-focus {
+    overflow: hidden;
+}
+
+body.hero-card-focus > *:not(main) {
+    display: none !important;
+}
+
+body.hero-card-focus main {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 10000;
+    display: block !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    box-sizing: border-box;
+    overflow: auto;
+    background: radial-gradient(ellipse at center, #12395d 0%, #061a30 75%);
+}
+
+body.hero-card-focus main > *:not(#middleColumn) {
+    display: none !important;
+}
+
+body.hero-card-focus #middleColumn {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 1100px !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+body.hero-card-focus #heroSection {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+body.hero-card-focus #heroSection > h2 {
+    display: none !important;
+}
+
+body.hero-card-focus #heroCard {
+    width: 100% !important;
+    max-width: 1000px;
+    min-height: 0 !important;
+    height: calc(100dvh - 24px) !important;
+    margin: 0 auto !important;
+    padding: clamp(12px, 3vw, 32px) !important;
+    box-sizing: border-box;
+    overflow: auto;
+    cursor: zoom-out !important;
+}
+
+body.hero-card-focus #heroName {
+    max-width: 100%;
+}
+
+body.hero-card-focus #heroCardFocusButton {
+    display: block !important;
+}
+
+@media (max-width: 600px) {
+    body.hero-card-focus main { padding: 6px !important; }
+    body.hero-card-focus #heroCard { height: calc(100dvh - 12px) !important; }
+}
+
+
+/* Fókusznézet: a jelvénylista ne legyen levágva, minden jelvény látszódjon. */
+body.hero-card-focus #heroCard {
+    height: auto !important;
+    min-height: calc(100dvh - 24px) !important;
+    overflow: visible !important;
+}
+
+body.hero-card-focus #badges {
+    max-height: none !important;
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+}
+
+body.hero-card-focus #heroCardFocusToggleButton {
+    display: none !important;
+}
+
+
+/* Nyomtatás / PDF gomb a nagyított Hőskártya jobb felső sarkában,
+   közvetlenül a Kilépés gomb mellett. */
+#heroCardPrintButton {
+    position: fixed;
+    top: 10px;
+    right: 130px;
+    z-index: 10005;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 10px;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 10px;
+    background: rgba(10, 30, 55, 0.94);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+#heroCardPrintButton:hover { background: rgba(28, 65, 100, 0.98); }
+
+/* Nyomtatáskor kizárólag a Hőskártya kerüljön a lapra. */
+@page {
+    size: A4 portrait;
+    margin: 8mm;
+}
+
+@media print {
+    html, body {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        overflow: visible !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #heroSection,
+    #heroSection * {
+        visibility: visible !important;
+    }
+
+    #heroSection {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+    }
+
+    #heroSection > h2,
+    #heroCardFocusButton,
+    #heroCardFocusToggleButton,
+    #heroCardPrintButton {
+        display: none !important;
+    }
+
+    #heroCard {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 8mm !important;
+        overflow: visible !important;
+        border-radius: 4mm !important;
+        break-inside: avoid !important;
+        background-color: #07305b !important;
+        background-image: url("../images/hero-card-bg.png") !important;
+        background-size: 100% 100% !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    #heroName {
+        font-size: 24pt !important;
+        margin-bottom: 8mm !important;
+        break-inside: avoid !important;
+    }
+
+    #badges {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex-shrink: 0 !important;
+        break-inside: avoid !important;
+    }
+
+    #heroSelfEvaluationBadge,
+    #heroSelfEvaluationCounts,
+    #earnedLevels,
+    #heroEvents {
+        break-inside: avoid !important;
+    }
+
+    #heroEvents {
+        margin-top: 5mm !important;
+    }
+}
+
+
+
+/* A kiemelt nézetben csak a nyomtatás/PDF és a kilépés gomb látszik. */
+body.hero-card-focus > #heroCardFocusButton,
+body.hero-card-focus > #heroCardPrintButton {
+    display: flex !important;
+}

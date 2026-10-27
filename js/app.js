@@ -2579,6 +2579,63 @@ if (fullscreenButton) {
 }
 
 // ------------------------------
+// Hőskártya fókusznézet – külön sarokgombbal
+// A kártya/jelvények kattintása így továbbra is a saját funkciójukat végzi.
+// ------------------------------
+const heroCard = document.getElementById("heroCard");
+const heroSection = document.getElementById("heroSection");
+
+if (heroCard && heroSection) {
+    const heroCardFocusButton = document.createElement("button");
+    heroCardFocusButton.id = "heroCardFocusButton";
+    heroCardFocusButton.type = "button";
+    heroCardFocusButton.textContent = "✕ Kilépés";
+    heroCardFocusButton.setAttribute("aria-label", "Kilépés a Hőskártya nézetből");
+    document.body.appendChild(heroCardFocusButton);
+
+    const heroCardFocusToggleButton = document.createElement("button");
+    heroCardFocusToggleButton.id = "heroCardFocusToggleButton";
+    heroCardFocusToggleButton.type = "button";
+    heroCardFocusToggleButton.textContent = "⛶";
+    heroCardFocusToggleButton.title = "Hőskártya kiemelése";
+    heroCardFocusToggleButton.setAttribute("aria-label", "Hőskártya kiemelése");
+    heroSection.appendChild(heroCardFocusToggleButton);
+    // Nyomtatás / PDF mentés gomb: csak a kiemelt nézetben jelenik meg.
+    const heroCardPrintButton = document.createElement("button");
+    heroCardPrintButton.id = "heroCardPrintButton";
+    heroCardPrintButton.type = "button";
+    heroCardPrintButton.textContent = "🖨️ / PDF";
+    heroCardPrintButton.title = "Nyomtatás vagy mentés PDF-ként";
+    heroCardPrintButton.setAttribute("aria-label", "Nyomtatás vagy mentés PDF-ként");
+    document.body.appendChild(heroCardPrintButton);
+    heroCardPrintButton.addEventListener("click", () => {
+        window.print();
+    });
+
+    function setHeroCardFocus(enabled) {
+        document.body.classList.toggle("hero-card-focus", enabled);
+        heroCardFocusButton.style.display = enabled ? "block" : "none";
+        heroCardPrintButton.style.display = enabled ? "flex" : "none";
+        heroCardFocusToggleButton.title = enabled ? "Teljes képernyő be-/kikapcsolása" : "Hőskártya kiemelése";
+        heroCardFocusToggleButton.setAttribute("aria-label", heroCardFocusToggleButton.title);
+    }
+
+    heroCardFocusToggleButton.addEventListener("click", () => {
+        setHeroCardFocus(!document.body.classList.contains("hero-card-focus"));
+    });
+
+    heroCardFocusButton.addEventListener("click", () => {
+        setHeroCardFocus(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && document.body.classList.contains("hero-card-focus")) {
+            setHeroCardFocus(false);
+        }
+    });
+}
+
+// ------------------------------
 // Megjelenítési mód
 // ------------------------------
 
